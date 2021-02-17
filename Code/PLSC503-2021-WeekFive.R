@@ -15,6 +15,8 @@ library(stargazer)
 # install.packages("MASS")
 library(MASS)
 
+# setwd() too...
+
 # Options...
 
 options(scipen = 6) # bias against scientific notation
@@ -187,7 +189,8 @@ vif(fit)
 
 # Drop GOP...
 
-fit2<-lm(votesum~ADA98+clint96+pctbl96+unionpct)
+fit2<-with(impeachment,
+           lm(votesum~ADA98+clint96+pctbl96+unionpct))
 summary(fit2)
 
 vif(fit2)
@@ -205,6 +208,9 @@ par(mar=c(4,4,2,2))
 matplot(ridge.vote$lambda,t(ridge.vote$coef),type="l",
         xlab=paste("log(lambda)"),
         ylab=expression(hat(beta)),lwd=2,log="x")
+legend("topright",legend=c("ADA","GOP","Clinton '96","Pct Black",
+                          "Union Pct."), lty=c(1,2,3,4,5),
+                 col=c(1,2,3,4,5),cex=0.8,bty="n")
 abline(h=0)
 abline(v=10)
 dev.off()
