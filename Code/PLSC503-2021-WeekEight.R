@@ -18,8 +18,8 @@ options(digits = 4) # show fewer decimal places
 ###################################################
 # Bootstrapping
 
-N<-800
-reps<-10001
+N<-100
+reps<-1001
 
 set.seed(7222009)
 X<-rnorm(N)
@@ -97,8 +97,8 @@ dev.off()
 
 rm(list=ls())
 
-N<-800
-reps<-10001
+N<-100
+reps<-1001
 
 set.seed(7222009)
 X<-rnorm(N)
